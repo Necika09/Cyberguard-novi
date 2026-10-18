@@ -1,9 +1,30 @@
 <?php
-// TSD-4RT | IN | 12.10.2026.
+// TSD-4RT | IN | 18.10.2026.
 $naslovStranice = "Cjenovnik usluga";
 $trenutnaStranica = "cjenik";
 
-// Varijable za pakete (Razina 1) - sprječava greške u karticama
+// C1 — Konstanta i izračun cijena s PDV-om
+const PDV = 0.25;
+
+// Usluga 1
+$naziv1 = "Procjena rizika";
+$cijenaBezPdv1 = 450;
+$pdv1 = $cijenaBezPdv1 * PDV;
+$ukupno1 = $cijenaBezPdv1 + $pdv1;
+
+// Usluga 2 (1280 € kako bi s PDV-om ukupno iznosilo 1.600,00 €)
+$naziv2 = "Sigurnosna analiza";
+$cijenaBezPdv2 = 1280;
+$pdv2 = $cijenaBezPdv2 * PDV;
+$ukupno2 = $cijenaBezPdv2 + $pdv2;
+
+// Usluga 3
+$naziv3 = "Edukacija zaposlenika";
+$cijenaBezPdv3 = 300;
+$pdv3 = $cijenaBezPdv3 * PDV;
+$ukupno3 = $cijenaBezPdv3 + $pdv3;
+
+// Varijable za pakete u karticama (sprječava nedefinirane varijable)
 $paket1_naziv = "Basic Audit";
 $paket1_cijena = "850";
 
@@ -12,15 +33,6 @@ $paket2_cijena = "2.200";
 
 $paket3_naziv = "Enterprise SOC";
 $paket3_cijena = "1.500";
-
-// Razina 3: Asocijativni niz s pojedinačnim uslugama
-$usluge = [
-    ["naziv" => "Procjena rizika", "cijena" => 450],
-    ["naziv" => "Sigurnosna analiza", "cijena" => 780],
-    ["naziv" => "Edukacija zaposlenika", "cijena" => 300]
-];
-
-$ukupno = 0;
 
 include "dijelovi/zaglavlje.php";
 ?>
@@ -32,7 +44,7 @@ include "dijelovi/zaglavlje.php";
         poslovanja
       </p>
 
-      <!-- 1. Glavni paketi (originalni izgled s karticama i slikama) -->
+      <!-- 1. Glavni paketi (kartice sa slikama) -->
       <div class="grid-container">
         <!-- Paket 1 -->
         <div class="card price-card">
@@ -108,46 +120,78 @@ include "dijelovi/zaglavlje.php";
         </div>
       </div>
 
-      <!-- 2. Razina 3: Pojedinačne usluge i dinamički izračun iz asocijativnog polja -->
+      <!-- 2. C1 dio: Tablica s obračunom PDV-a i formatiranim iznosima -->
       <section class="card" style="margin-bottom: 3.5rem; border-top: 3px solid var(--brand-blue);">
-        <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Pojedinačne usluge i kalkulacija</h2>
+        <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Struktura cijena s PDV-om</h2>
         <p class="section-subtitle" style="margin-bottom: 1.5rem;">
-          Trebate samo specifične provjere? Pregledajte cijene pojedinačnih modula s automatskim izračunom ukupne vrijednosti:
+          Prikaz cijena pojedinačnih usluga s uračunatim porezom na dodanu vrijednost (stopa 25 %):
         </p>
 
         <div style="overflow-x: auto;">
           <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
             <thead>
               <tr style="background-color: var(--brand-navy); color: #ffffff;">
-                <th style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: left; font-weight: 600;">Naziv usluge</th>
-                <th style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-weight: 600; width: 200px;">Cijena (€)</th>
+                <th style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: left; font-weight: 600;">Usluga</th>
+                <th style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-weight: 600;">Bez PDV-a</th>
+                <th style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-weight: 600;">PDV (25 %)</th>
+                <th style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-weight: 600;">Ukupno</th>
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($usluge as $usluga): ?>
-                <?php $ukupno += $usluga["cijena"]; ?>
-                <tr style="border-bottom: 1px solid var(--border-color); background-color: var(--bg-surface);">
-                  <td style="padding: 12px 16px; border: 1px solid var(--border-color); color: var(--text-heading); font-weight: 500;">
-                    <?php echo $usluga["naziv"]; ?>
-                  </td>
-                  <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); font-weight: 600; color: var(--brand-navy);">
-                    <?php echo number_format($usluga["cijena"], 2, ',', '.'); ?> €
-                  </td>
-                </tr>
-              <?php endforeach; ?>
-            </tbody>
-            <tfoot>
-              <tr style="background-color: rgba(9, 105, 218, 0.08); font-weight: 700;">
-                <td style="padding: 14px 16px; border: 1px solid var(--border-color); color: var(--brand-navy);">
-                  UKUPNO (ako se ugovore sve usluge):
+              <!-- Usluga 1 -->
+              <tr style="border-bottom: 1px solid var(--border-color); background-color: var(--bg-surface);">
+                <td style="padding: 12px 16px; border: 1px solid var(--border-color); color: var(--text-heading); font-weight: 500;">
+                  <?php echo $naziv1; ?>
                 </td>
-                <td style="padding: 14px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); font-size: 1.15rem; color: var(--brand-blue);">
-                  <?php echo number_format($ukupno, 2, ',', '.'); ?> €
+                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono);">
+                  <?php echo number_format($cijenaBezPdv1, 2, ',', '.'); ?> €
+                </td>
+                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); color: var(--text-muted);">
+                  <?php echo number_format($pdv1, 2, ',', '.'); ?> €
+                </td>
+                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); font-weight: 700; color: var(--brand-blue);">
+                  <?php echo number_format($ukupno1, 2, ',', '.'); ?> €
                 </td>
               </tr>
-            </tfoot>
+
+              <!-- Usluga 2 -->
+              <tr style="border-bottom: 1px solid var(--border-color); background-color: var(--bg-surface);">
+                <td style="padding: 12px 16px; border: 1px solid var(--border-color); color: var(--text-heading); font-weight: 500;">
+                  <?php echo $naziv2; ?>
+                </td>
+                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono);">
+                  <?php echo number_format($cijenaBezPdv2, 2, ',', '.'); ?> €
+                </td>
+                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); color: var(--text-muted);">
+                  <?php echo number_format($pdv2, 2, ',', '.'); ?> €
+                </td>
+                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); font-weight: 700; color: var(--brand-blue);">
+                  <?php echo number_format($ukupno2, 2, ',', '.'); ?> €
+                </td>
+              </tr>
+
+              <!-- Usluga 3 -->
+              <tr style="border-bottom: 1px solid var(--border-color); background-color: var(--bg-surface);">
+                <td style="padding: 12px 16px; border: 1px solid var(--border-color); color: var(--text-heading); font-weight: 500;">
+                  <?php echo $naziv3; ?>
+                </td>
+                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono);">
+                  <?php echo number_format($cijenaBezPdv3, 2, ',', '.'); ?> €
+                </td>
+                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); color: var(--text-muted);">
+                  <?php echo number_format($pdv3, 2, ',', '.'); ?> €
+                </td>
+                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); font-weight: 700; color: var(--brand-blue);">
+                  <?php echo number_format($ukupno3, 2, ',', '.'); ?> €
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
+
+        <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-muted);">
+          Cijene ažurirane: <strong><?php echo date("j. n. Y."); ?></strong>
+        </p>
       </section>
 
       <!-- 3. Kontakt forma prije podnožja -->
