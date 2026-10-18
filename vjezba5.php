@@ -1,4 +1,5 @@
 <?php
+// TSD-4RT | IN | 18.10.2026.
 var_dump(7 / 2);
 var_dump(8 / 2);
 var_dump("5" + 3);

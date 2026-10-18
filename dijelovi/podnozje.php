@@ -1,6 +1,13 @@
 <?php
-// TSD-4RT | IN | 12.10.2026.
-$godina = 2026;
+// TSD-4RT | IN | 18.10.2026.
+
+// Razina 1: Godina osnutka i izračun godina rada
+$godinaOsnutka = 2019;
+$godineRada = (int)date("Y") - $godinaOsnutka;
+
+// Razina 1: E-mail s razmacima očišćen pomoću trim() i strtolower()
+$siroviEmail = "  Info@SigurnaMreza.HR ";
+$cistiEmail = strtolower(trim($siroviEmail));
 ?>
     <footer>
       <div class="footer-container">
@@ -9,8 +16,17 @@ $godina = 2026;
           <p>
             Vodeća tvrtka za kibernetičku sigurnost i zaštitu digitalne imovine.
           </p>
+          <p style="margin-top: 0.5rem; font-weight: 500; color: var(--brand-blue);">
+            Na tržištu od <?php echo $godinaOsnutka; ?>. — već <?php echo $godineRada; ?> godina
+          </p>
           <p style="margin-top: 0.5rem">
             <strong>Adresa:</strong> Gundulićeva 14, 43500 Daruvar (Tehnička škola Daruvar)
+          </p>
+          <p style="margin-top: 0.3rem">
+            <strong>E-mail:</strong> 
+            <a href="mailto:<?php echo $cistiEmail; ?>" style="color: inherit; text-decoration: underline;">
+              <?php echo $cistiEmail; ?>
+            </a>
           </p>
           <div class="footer-map-container">
             <iframe
@@ -63,7 +79,8 @@ $godina = 2026;
         <p>&copy; <?php echo date("Y"); ?> CyberGuard Solutions d.o.o. Sva prava pridržana.</p>
       </div>
     </footer>
-<!-- Obvezni kolačići -->
+
+    <!-- Obvezni kolačići -->
     <aside id="cookie-banner" class="cookie-banner">
       <h4>Obavijest o kolačićima</h4>
       <p>
