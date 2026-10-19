@@ -569,6 +569,74 @@ footer {
   display: block;
 }
 
+/* ===================================================
+   Podnožje: Dodatni detalji i Radno vrijeme (C1)
+   =================================================== */
+
+.footer-godine-rada {
+  margin-top: 0.5rem;
+  font-weight: 500;
+  color: var(--brand-blue);
+}
+
+.footer-kontakt-stavka {
+  margin-top: 0.5rem;
+}
+
+.footer-email-stavka {
+  margin-top: 0.3rem;
+}
+
+.footer-email-link {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.footer-map-container iframe {
+  border: 0;
+}
+
+/* Radno vrijeme (Blok 6 - C1) */
+.tabela-radno-vrijeme {
+  width: 100%;
+  margin-bottom: 0.85rem;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.tabela-radno-vrijeme td {
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-light-muted, #94a3b8);
+}
+
+.status-oznaka {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.status-otvoreno {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #34d399; /* zeleno */
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.status-zatvoreno {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #94a3b8; /* sivo */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.status-tocka {
+  font-size: 0.8rem;
+}
+
 /* 11. Responzivnost */
 @media (max-width: 768px) {
   .header-container {
