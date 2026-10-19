@@ -1,5 +1,5 @@
 <?php
-// TSD-4RT | IN | 18.10.2026.
+// TSD-4RT | IN | 19.10.2026.
 $naslovStranice = "Cjenovnik usluga";
 $trenutnaStranica = "cjenik";
 
@@ -12,7 +12,7 @@ $opis1 = "Sveobuhvatna procjena sigurnosnih rizika za digitalnu infrastrukturu t
 $cijenaBezPdv1 = 450;
 $pdv1 = $cijenaBezPdv1 * PDV;
 $ukupno1 = $cijenaBezPdv1 + $pdv1;
-// Razina 2: -15% za članove, zaokruženo na cijeli euro
+// Razina 2 (Blok 5): -15% za članove, zaokruženo na cijeli euro
 $clanovi1 = round($ukupno1 * 0.85);
 
 // Usluga 2
@@ -64,9 +64,7 @@ include "dijelovi/zaglavlje.php";
           <p>Za manje tvrtke i web trgovine</p>
           <div class="price-tag">
             <?php echo $paket1_cijena; ?> €
-            <small style="font-size: 0.9rem; font-weight: normal"
-              >/ jednokratno</small
-            >
+            <small>/ jednokratno</small>
           </div>
           <ul>
             <li>Automatizirano skeniranje ranjivosti</li>
@@ -88,9 +86,7 @@ include "dijelovi/zaglavlje.php";
           <p>Za srednje tvrtke i web aplikacije</p>
           <div class="price-tag">
             <?php echo $paket2_cijena; ?> €
-            <small style="font-size: 0.9rem; font-weight: normal"
-              >/ po sustavu</small
-            >
+            <small>/ po sustavu</small>
           </div>
           <ul>
             <li>Potpuni manualni penetracijski test</li>
@@ -113,9 +109,7 @@ include "dijelovi/zaglavlje.php";
           <p>Za organizacije s visokim rizikom</p>
           <div class="price-tag">
             <?php echo $paket3_cijena; ?> €
-            <small style="font-size: 0.9rem; font-weight: normal"
-              >/ mjesečno</small
-            >
+            <small>/ mjesečno</small>
           </div>
           <ul>
             <li>24/7/365 kontinuirani nadzor mreže</li>
@@ -127,118 +121,134 @@ include "dijelovi/zaglavlje.php";
         </div>
       </div>
 
-      <!-- 2. Razina 2 i 3: Tablica usluga s opisima, popustom za članove i opcijom rata za iznose > 1000 € -->
-      <section class="card" style="margin-bottom: 3.5rem; border-top: 3px solid var(--brand-blue);">
-        <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Struktura cijena s PDV-om</h2>
-        <p class="section-subtitle" style="margin-bottom: 1.5rem;">
+      <!-- 2. Tablica usluga s opisima, popustom za članove, opcijom rata i oznakom "Povoljno" (Razina 1) -->
+            <!-- Tablica: Struktura cijena s PDV-om i oznaka "Povoljno" (Razina 1) -->
+      <section class="card cjenik-tabela-sekcija">
+        <h2 class="section-title cjenik-tabela-naslov">Struktura cijena s PDV-om</h2>
+        <p class="section-subtitle cjenik-tabela-podnaslov">
           Prikaz pojedinačnih cijena, stopa PDV-a, pogodnosti za članove te mogućnosti obročnog plaćanja:
         </p>
 
-        <div style="overflow-x: auto;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+        <div class="tabela-responzivno">
+          <table class="tabela-usluga">
             <thead>
-              <tr style="background-color: var(--brand-navy); color: #ffffff;">
-                <th style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: left; font-weight: 600;">Usluga</th>
-                <th style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: left; font-weight: 600;">Opis usluge</th>
-                <th style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-weight: 600;">Bez PDV-a</th>
-                <th style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-weight: 600;">PDV (25 %)</th>
-                <th style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-weight: 600;">Ukupno</th>
-                <th style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-weight: 600; color: #a5d8ff;">Za članove (−15 %)</th>
+              <tr>
+                <th>Usluga</th>
+                <th>Opis usluge</th>
+                <th class="tekst-desno">Bez PDV-a</th>
+                <th class="tekst-desno">PDV (25 %)</th>
+                <th class="tekst-desno">Ukupno</th>
+                <th class="tekst-desno th-clanovi">Za članove (−15 %)</th>
               </tr>
             </thead>
             <tbody>
               <!-- Usluga 1 -->
-              <tr style="border-bottom: 1px solid var(--border-color); background-color: var(--bg-surface);">
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); color: var(--text-heading); font-weight: 600;">
+              <tr>
+                <td class="td-naziv" data-label="Usluga">
                   <?php echo $naziv1; ?>
+                  <?php if ($cijenaBezPdv1 < 500): ?>
+                    <span class="oznaka-povoljno">Povoljno</span>
+                  <?php endif; ?>
                 </td>
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem;">
+                <td class="td-opis" data-label="Opis usluge">
                   <?php echo mb_substr($opis1, 0, 40) . "…"; ?>
                 </td>
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono);">
+                <td class="td-broj" data-label="Bez PDV-a">
                   <?php echo number_format($cijenaBezPdv1, 2, ',', '.'); ?> €
                 </td>
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); color: var(--text-muted);">
+                <td class="td-pdv" data-label="PDV (25 %)">
                   <?php echo number_format($pdv1, 2, ',', '.'); ?> €
                 </td>
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); font-weight: 600;">
+                <td class="td-ukupno" data-label="Ukupno s PDV-om">
                   <?php echo number_format($ukupno1, 2, ',', '.'); ?> €
                   <?php if ($ukupno1 > 1000): ?>
                     <?php 
                       $rata1 = round($ukupno1 / 3, 2); 
                       $zbrojRata1 = $rata1 * 3;
                     ?>
-                    <div style="font-size: 0.78rem; font-weight: normal; color: var(--brand-blue); margin-top: 4px;">
-                      Moguće plaćanje u 3 rate po <?php echo number_format($rata1, 2, ',', '.'); ?> €<br>
-                      <span style="color: var(--text-muted);">(zbroj: <?php echo number_format($zbrojRata1, 2, ',', '.'); ?> €)</span>
+                    <div class="rate-box">
+                      3 × <?php echo number_format($rata1, 2, ',', '.'); ?> €
+                      <?php if ($zbrojRata1 != $ukupno1): ?>
+                        <div class="rate-zbroj">(zadnja: <?php echo number_format($ukupno1 - ($rata1 * 2), 2, ',', '.'); ?> €)</div>
+                      <?php endif; ?>
                     </div>
                   <?php endif; ?>
                 </td>
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); font-weight: 700; color: var(--brand-blue);">
+                <td class="td-clanovi" data-label="Za članove (-15 %)">
                   <?php echo number_format($clanovi1, 2, ',', '.'); ?> €
                 </td>
               </tr>
 
               <!-- Usluga 2 -->
-              <tr style="border-bottom: 1px solid var(--border-color); background-color: var(--bg-surface);">
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); color: var(--text-heading); font-weight: 600;">
+              <tr>
+                <td class="td-naziv" data-label="Usluga">
                   <?php echo $naziv2; ?>
+                  <?php if ($cijenaBezPdv2 < 500): ?>
+                    <span class="oznaka-povoljno">Povoljno</span>
+                  <?php endif; ?>
                 </td>
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem;">
+                <td class="td-opis" data-label="Opis usluge">
                   <?php echo mb_substr($opis2, 0, 40) . "…"; ?>
                 </td>
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono);">
+                <td class="td-broj" data-label="Bez PDV-a">
                   <?php echo number_format($cijenaBezPdv2, 2, ',', '.'); ?> €
                 </td>
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); color: var(--text-muted);">
+                <td class="td-pdv" data-label="PDV (25 %)">
                   <?php echo number_format($pdv2, 2, ',', '.'); ?> €
                 </td>
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); font-weight: 600;">
+                <td class="td-ukupno" data-label="Ukupno s PDV-om">
                   <?php echo number_format($ukupno2, 2, ',', '.'); ?> €
                   <?php if ($ukupno2 > 1000): ?>
                     <?php 
                       $rata2 = round($ukupno2 / 3, 2); 
                       $zbrojRata2 = $rata2 * 3;
                     ?>
-                    <div style="font-size: 0.78rem; font-weight: normal; color: var(--brand-blue); margin-top: 4px;">
-                      Moguće plaćanje u 3 rate po <?php echo number_format($rata2, 2, ',', '.'); ?> €<br>
-                      <span style="color: var(--text-muted);">(zbroj: <?php echo number_format($zbrojRata2, 2, ',', '.'); ?> €)</span>
+                    <div class="rate-box">
+                      3 × <?php echo number_format($rata2, 2, ',', '.'); ?> €
+                      <?php if ($zbrojRata2 != $ukupno2): ?>
+                        <div class="rate-zbroj">(zadnja: <?php echo number_format($ukupno2 - ($rata2 * 2), 2, ',', '.'); ?> €)</div>
+                      <?php endif; ?>
                     </div>
                   <?php endif; ?>
                 </td>
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); font-weight: 700; color: var(--brand-blue);">
+                <td class="td-clanovi" data-label="Za članove (-15 %)">
                   <?php echo number_format($clanovi2, 2, ',', '.'); ?> €
                 </td>
               </tr>
 
               <!-- Usluga 3 -->
-              <tr style="border-bottom: 1px solid var(--border-color); background-color: var(--bg-surface);">
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); color: var(--text-heading); font-weight: 600;">
+              <tr>
+                <td class="td-naziv" data-label="Usluga">
                   <?php echo $naziv3; ?>
+                  <?php if ($cijenaBezPdv3 < 500): ?>
+                    <span class="oznaka-povoljno">Povoljno</span>
+                  <?php endif; ?>
                 </td>
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.9rem;">
+                <td class="td-opis" data-label="Opis usluge">
                   <?php echo mb_substr($opis3, 0, 40) . "…"; ?>
                 </td>
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono);">
+                <td class="td-broj" data-label="Bez PDV-a">
                   <?php echo number_format($cijenaBezPdv3, 2, ',', '.'); ?> €
                 </td>
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); color: var(--text-muted);">
+                <td class="td-pdv" data-label="PDV (25 %)">
                   <?php echo number_format($pdv3, 2, ',', '.'); ?> €
                 </td>
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); font-weight: 600;">
+                <td class="td-ukupno" data-label="Ukupno s PDV-om">
                   <?php echo number_format($ukupno3, 2, ',', '.'); ?> €
                   <?php if ($ukupno3 > 1000): ?>
                     <?php 
                       $rata3 = round($ukupno3 / 3, 2); 
                       $zbrojRata3 = $rata3 * 3;
                     ?>
-                    <div style="font-size: 0.78rem; font-weight: normal; color: var(--brand-blue); margin-top: 4px;">
-                      Moguće plaćanje u 3 rate po <?php echo number_format($rata3, 2, ',', '.'); ?> €<br>
-                      <span style="color: var(--text-muted);">(zbroj: <?php echo number_format($zbrojRata3, 2, ',', '.'); ?> €)</span>
+                    <div class="rate-box">
+                      3 × <?php echo number_format($rata3, 2, ',', '.'); ?> €
+                      <?php if ($zbrojRata3 != $ukupno3): ?>
+                        <div class="rate-zbroj">(zadnja: <?php echo number_format($ukupno3 - ($rata3 * 2), 2, ',', '.'); ?> €)</div>
+                      <?php endif; ?>
                     </div>
                   <?php endif; ?>
                 </td>
-                <td style="padding: 12px 16px; border: 1px solid var(--border-color); text-align: right; font-family: var(--font-mono); font-weight: 700; color: var(--brand-blue);">
+                <td class="td-clanovi" data-label="Za članove (-15 %)">
                   <?php echo number_format($clanovi3, 2, ',', '.'); ?> €
                 </td>
               </tr>
@@ -246,8 +256,8 @@ include "dijelovi/zaglavlje.php";
           </table>
         </div>
 
-        <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-muted);">
-          Cijene ažurirane: <strong><?php echo date("j. n. Y."); ?></strong>
+        <p class="cjenik-azurirano">
+          <em>* Cjenik je ažuriran na dan: <?php echo date("d.m.Y."); ?>. Sve cijene izražene su u eurima (€).</em>
         </p>
       </section>
 

@@ -9,27 +9,36 @@ $godineRada = (int)date("Y") - $godinaOsnutka;
 $siroviEmail = "  Info@SigurnaMreza.HR ";
 $cistiEmail = strtolower(trim($siroviEmail));
 
-// C1 (Blok 6): Dan i sat te provjera radnog vremena
-$dan = (int) date("N");   // 1 = ponedjeljak … 7 = nedjelja
-$sat = (int) date("G");   // sat bez vodeće nule, 0–23
+// Blok 6 (C1 / Razina 3): Trenutni dan (1 = ponedjeljak ... 7 = nedjelja) i sat (0-23)
+$dan = (int)date("N");
+$sat = (int)date("G");
 
-// Testiranje za C2 (odkomentiraj za provjeru određenog termina, pa ponovno zakomentiraj):
-// $dan = 5; $sat = 16;
-
+// Provjera trenutnog radnog statusa
 if ($dan >= 1 && $dan <= 5 && $sat >= 8 && $sat < 16) {
-    $porukaRadnoVrijeme = "Otvoreno — radimo do 16:00";
-    $klasaRadnoVrijeme = "status-otvoreno";
+    $statusPoruka = "Otvoreno — radimo do 16:00";
+    $statusKlasa = "status-otvoreno";
 } elseif ($dan === 6 && $sat >= 9 && $sat < 13) {
-    $porukaRadnoVrijeme = "Otvoreno — radimo do 13:00";
-    $klasaRadnoVrijeme = "status-otvoreno";
+    $statusPoruka = "Otvoreno — radimo do 13:00";
+    $statusKlasa = "status-otvoreno";
 } else {
-    $porukaRadnoVrijeme = "Zatvoreno";
-    $klasaRadnoVrijeme = "status-zatvoreno";
+    // Razina 2: Logika poruke sljedećeg otvaranja
+    if ($dan >= 1 && $dan <= 5 && $sat < 8) {
+        $statusPoruka = "Zatvoreno — otvaramo danas u 8:00";
+    } elseif ($dan >= 1 && $dan <= 4 && $sat >= 16) {
+        $statusPoruka = "Zatvoreno — otvaramo sutra u 8:00";
+    } elseif ($dan === 5 && $sat >= 16) {
+        $statusPoruka = "Zatvoreno — otvaramo sutra u 9:00";
+    } elseif ($dan === 6 && $sat < 9) {
+        $statusPoruka = "Zatvoreno — otvaramo danas u 9:00";
+    } else {
+        // Subota nakon 13:00 ili cijela nedjelja
+        $statusPoruka = "Zatvoreno — otvaramo u ponedjeljak u 8:00";
+    }
+    $statusKlasa = "status-zatvoreno";
 }
 ?>
     <footer>
       <div class="footer-container">
-        <!-- 1. Stupac: O tvrtki i lokacija -->
         <div class="footer-col">
           <h4>CyberGuard Solutions</h4>
           <p>
@@ -57,31 +66,44 @@ if ($dan >= 1 && $dan <= 5 && $sat >= 8 && $sat < 16) {
           </div>
         </div>
 
-        <!-- 2. Stupac: Radno vrijeme (C1) -->
+        <!-- Razina 3: Tablica generirana for petljom (1..7) i match izrazom, stilizirana klasama iz tvog style.css -->
         <div class="footer-col">
           <h4>Radno vrijeme</h4>
           <table class="tabela-radno-vrijeme">
             <tbody>
-              <tr>
-                <td>Ponedjeljak – Petak:</td>
-                <td>08:00 – 16:00</td>
-              </tr>
-              <tr>
-                <td>Subota:</td>
-                <td>09:00 – 13:00</td>
-              </tr>
-              <tr>
-                <td>Nedjelja:</td>
-                <td>Zatvoreno</td>
-              </tr>
+              <?php
+              for ($i = 1; $i <= 7; $i++) {
+                  $nazivDana = match ($i) {
+                      1 => "Ponedjeljak",
+                      2 => "Utorak",
+                      3 => "Srijeda",
+                      4 => "Četvrtak",
+                      5 => "Petak",
+                      6 => "Subota",
+                      7 => "Nedjelja"
+                  };
+
+                  $satiRada = match ($i) {
+                      1, 2, 3, 4, 5 => "08:00 – 16:00",
+                      6             => "09:00 – 13:00",
+                      7             => "Zatvoreno"
+                  };
+
+                  // Razina 3b: Isticanje današnjeg dana (tvoj style.css koristi klasu dan-aktivno)
+                  $redKlasa = ($i === $dan) ? ' class="dan-aktivno"' : '';
+
+                  echo "<tr{$redKlasa}><td>{$nazivDana}</td><td>{$satiRada}</td></tr>\n              ";
+              }
+              ?>
             </tbody>
           </table>
-          <p class="status-oznaka <?php echo $klasaRadnoVrijeme; ?>">
-            <span class="status-tocka">●</span> <?php echo $porukaRadnoVrijeme; ?>
-          </p>
+
+          <div class="status-oznaka <?php echo $statusKlasa; ?>">
+            <span class="status-tocka">&#9679;</span>
+            <span><?php echo $statusPoruka; ?></span>
+          </div>
         </div>
 
-        <!-- 3. Stupac: Društvene mreže -->
         <div class="footer-col">
           <h4>Pratite nas</h4>
           <p>
@@ -104,7 +126,6 @@ if ($dan >= 1 && $dan <= 5 && $sat >= 8 && $sat < 16) {
           </p>
         </div>
 
-        <!-- 4. Stupac: Newsletter -->
         <div class="footer-col">
           <h4>Newsletter</h4>
           <p>

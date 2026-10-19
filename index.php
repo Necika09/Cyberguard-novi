@@ -1,5 +1,15 @@
 <?php
-// TSD-4RT | IN | 18.10.2026.
+// TSD-4RT | IN | 19.10.2026.
+
+$sat = (int) date("G");
+
+if ($sat < 12) {
+    $pozdrav = "Dobro jutro";
+} elseif ($sat < 18) {
+    $pozdrav = "Dobar dan";
+} else {
+    $pozdrav = "Dobra večer";
+}
 ?>
     <!-- Zaglavlje s logotipom i navigacijom -->
     <?php
@@ -12,6 +22,9 @@
     <main>
       <!-- Hero sekcija -->
       <section class="hero">
+        <p class="hero-pozdrav">
+          <?php echo $pozdrav; ?>! Dobrodošli u CyberGuard Solutions.
+        </p>
         <h1>Sigurnost vaših digitalnih sustava na prvom mjestu</h1>
         <p>
           Pružamo cjelovita rješenja za zaštitu od kibernetičkih prijetnji,

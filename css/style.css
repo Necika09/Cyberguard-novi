@@ -637,6 +637,186 @@ footer {
   font-size: 0.8rem;
 }
 
+/* Cjenik: Redizajnirana profesionalna tablica (Razina 1) */
+
+.price-tag small {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: var(--text-muted);
+}
+
+.cjenik-tabela-sekcija {
+  margin-bottom: 3.5rem;
+  border-top: 3px solid var(--brand-blue);
+  background-color: var(--bg-surface);
+}
+
+.cjenik-tabela-naslov {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cjenik-tabela-podnaslov {
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+}
+
+.tabela-responzivno {
+  overflow-x: auto;
+  margin: 1.5rem 0 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.tabela-usluga {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  text-align: left;
+}
+
+/* Zaglavlje tablice */
+.tabela-usluga thead th {
+  background-color: var(--brand-navy);
+  color: #ffffff;
+  padding: 14px 18px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--brand-blue);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tabela-usluga thead th:last-child {
+  border-right: none;
+}
+
+.tabela-usluga thead th.tekst-desno {
+  text-align: right;
+}
+
+.tabela-usluga thead th.th-clanovi {
+  color: #38bdf8; /* Tirkizno istaknuto */
+}
+
+/* Tijelo tablice */
+.tabela-usluga tbody tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.15s ease;
+}
+
+.tabela-usluga tbody tr:nth-child(even) {
+  background-color: #f8fafc; /* Suptilna zebra podloga */
+}
+
+.tabela-usluga tbody tr:hover {
+  background-color: #f1f5f9; /* Isticanje pri prelasku mišem */
+}
+
+.tabela-usluga tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tabela-usluga td {
+  padding: 14px 18px;
+  vertical-align: middle;
+  border-right: 1px solid var(--border-subtle, #e2e8f0);
+}
+
+.tabela-usluga td:last-child {
+  border-right: none;
+}
+
+/* Stiliziranje pojedinačnih ćelija */
+.td-naziv {
+  color: var(--brand-navy);
+  font-weight: 600;
+  font-size: 0.95rem;
+  min-width: 190px;
+}
+
+.td-opis {
+  color: var(--text-body);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  min-width: 240px;
+}
+
+.td-broj, 
+.td-pdv, 
+.td-ukupno, 
+.td-clanovi {
+  text-align: right;
+  font-family: var(--font-mono);
+  white-space: nowrap; /* Sprječava stiskanje iznosa */
+}
+
+.td-broj {
+  color: var(--text-body);
+}
+
+.td-pdv {
+  color: var(--text-muted);
+}
+
+.td-ukupno {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.td-clanovi {
+  font-weight: 700;
+  color: var(--brand-blue);
+  background-color: rgba(9, 105, 218, 0.03); /* Lagano plavkasto istaknuto */
+}
+
+/* Značka "Povoljno" (Razina 1) */
+.oznaka-povoljno {
+  display: inline-block;
+  background-color: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* Okvir za rate */
+.rate-box {
+  margin-top: 6px;
+  padding: 5px 8px;
+  background-color: rgba(9, 105, 218, 0.06);
+  border: 1px dashed var(--brand-blue);
+  border-radius: 4px;
+  font-size: 0.76rem;
+  text-align: right;
+  line-height: 1.4;
+}
+
+.rate-zbroj {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+.cjenik-azurirano {
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.tabela-radno-vrijeme tr.dan-aktivno td {
+  color: #38bdf8; /* svijetlo plava oznaka */
+  font-weight: 700;
+}
+
 /* 11. Responzivnost */
 @media (max-width: 768px) {
   .header-container {
@@ -694,5 +874,104 @@ footer {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  /* Responzivnost tablice cjenika za tablete i mobitele */
+  @media (max-width: 860px) {
+    .tabela-responzivno {
+      border: none;
+      box-shadow: none;
+      background: transparent;
+    }
+
+    .tabela-usluga {
+      display: block;
+      width: 100%;
+    }
+
+    .tabela-usluga thead {
+      display: none; /* Sakrij klasično zaglavlje */
+    }
+
+    .tabela-usluga tbody {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .tabela-usluga tbody tr {
+      display: block;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.85rem 1.1rem;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+
+    .tabela-usluga td {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Omogućuje prelamanje ako sadržaj ne stane */
+      gap: 0.5rem;
+      padding: 0.65rem 0;
+      border-right: none;
+      border-bottom: 1px solid var(--border-subtle);
+      min-width: 0;
+      text-align: right;
+    }
+
+    .tabela-usluga td:last-child {
+      border-bottom: none;
+    }
+
+    /* Oznaka stupca s lijeve strane */
+    .tabela-usluga td::before {
+      content: attr(data-label);
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: left;
+      flex-shrink: 0;
+    }
+
+    .td-naziv {
+      font-size: 1.1rem;
+      border-bottom: 2px solid var(--brand-blue) !important;
+      padding-bottom: 0.75rem !important;
+    }
+
+    .td-naziv::before {
+      display: none;
+    }
+
+    .td-opis {
+      text-align: right;
+      font-size: 0.88rem;
+      white-space: normal;
+    }
+
+    /* Popravak za ukupno i okvir rata da nikada ne bježi van */
+    .td-ukupno {
+      flex-wrap: wrap;
+      align-items: flex-end;
+    }
+
+    .td-ukupno .rate-box {
+      width: 100%; /* Spušta okvir s ratama u novi red ispod iznosa */
+      margin-top: 0.4rem;
+      box-sizing: border-box;
+      text-align: right;
+    }
+
+    .td-clanovi {
+      background-color: rgba(9, 105, 218, 0.05);
+      padding: 0.65rem 0.5rem !important;
+      border-radius: 4px;
+      margin-top: 0.35rem;
+    }
+  }
+
 }
 
