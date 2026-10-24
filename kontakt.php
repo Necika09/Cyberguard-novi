@@ -41,17 +41,6 @@
           <p><strong>SOS linija:</strong> +385 800 999 112</p>
           <p><strong>Enkripcija:</strong> PGP ključ dostupan na zahtjev</p>
         </div>
-
-        <div class="card">
-          <img
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80"
-            alt="Moderni uredski prostor za korisničku podršku i sastanke"
-            class="card-img"
-          />
-          <h3>Radno vrijeme ureda</h3>
-          <p>Ponedjeljak – Petak: 08:00 – 17:00</p>
-          <p>SOC Nadzorni centar: 24/7/365 bez prekida</p>
-        </div>
       </div>
 
       <!-- Karta lokacije na stranici za kontakt -->
@@ -77,7 +66,7 @@
         <p class="section-subtitle">
           Ispunite obrazac u nastavku i odgovorit ćemo unutar nekoliko sati.
         </p>
-        <form class="contact-form">
+        <form class="contact-form" method="POST">
           <div class="form-group">
             <label for="contact-name">Ime i prezime:</label>
             <input
@@ -106,6 +95,31 @@
               name="phone"
               placeholder="+385 91 123 4567"
             />
+          </div>
+          <!-- Padajući izbornik 1: Broj zaposlenika -->
+          <div class="form-group">
+              <label for="broj_zaposlenika">Broj zaposlenika:</label>
+              <select name="broj_zaposlenika" id="broj_zaposlenika">
+                  <option value="">-- Odaberite broj zaposlenika --</option>
+                  <?php
+                  for ($z = 10; $z <= 200; $z += 10) {
+                      echo "<option value=\"{$z}\">{$z} zaposlenika</option>\n";
+                  }
+                  ?>
+              </select>
+          </div>
+          <!-- Padajući izbornik 2: Godina osnutka tvrtke -->
+          <div class="form-group">
+              <label for="godina_osnutka">Godina osnutka vaše tvrtke:</label>
+              <select name="godina_osnutka" id="godina_osnutka">
+                  <option value="">-- Odaberite godinu --</option>
+                  <?php
+                  $trenutnaGodina = (int)date('Y');
+                  for ($god = $trenutnaGodina; $god >= 1990; $god--) {
+                      echo "<option value=\"{$god}\">{$god}.</option>\n";
+                  }
+                  ?>
+              </select>
           </div>
           <div class="form-group">
             <label for="contact-subject">Predmet upita:</label>

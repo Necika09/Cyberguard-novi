@@ -6,6 +6,11 @@ $trenutnaStranica = "cjenik";
 // C1 — Konstanta za stopu PDV-a
 const PDV = 0.25;
 
+// Blok 7 — C1: Postavke za mjesečno održavanje računala
+$cijenaPoRacunalu = 12;      // 12 € po računalu
+$popustPrag = 20;            // Za 20 i više računala
+$popustPostotak = 0.10;      // 10 % popusta
+
 // Usluga 1
 $naziv1 = "Procjena rizika";
 $opis1 = "Sveobuhvatna procjena sigurnosnih rizika za digitalnu infrastrukturu tvrtke.";
@@ -122,7 +127,6 @@ include "dijelovi/zaglavlje.php";
       </div>
 
       <!-- 2. Tablica usluga s opisima, popustom za članove, opcijom rata i oznakom "Povoljno" (Razina 1) -->
-            <!-- Tablica: Struktura cijena s PDV-om i oznaka "Povoljno" (Razina 1) -->
       <section class="card cjenik-tabela-sekcija">
         <h2 class="section-title cjenik-tabela-naslov">Struktura cijena s PDV-om</h2>
         <p class="section-subtitle cjenik-tabela-podnaslov">
@@ -259,6 +263,52 @@ include "dijelovi/zaglavlje.php";
         <p class="cjenik-azurirano">
           <em>* Cjenik je ažuriran na dan: <?php echo date("d.m.Y."); ?>. Sve cijene izražene su u eurima (€).</em>
         </p>
+      </section>
+
+      <!-- Blok 7 — C1: Tablica mjesečnog održavanja računala generirana pomoću petlje for -->
+      <section class="card cjenik-tabela-sekcija">
+        <h2 class="section-title cjenik-tabela-naslov">Cjenik održavanja računala</h2>
+        <p class="section-subtitle cjenik-tabela-podnaslov">
+          Mjesečno održavanje radnih stanica uz automatski popust od 10 % za 20 i više računala:
+        </p>
+
+        <div class="tabela-responzivno">
+          <table class="tabela-usluga">
+            <thead>
+              <tr>
+                <th>Broj računala</th>
+                <th class="tekst-desno">Mjesečno</th>
+                <th class="tekst-desno">Napomena</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              for ($brojRacunala = 5; $brojRacunala <= 50; $brojRacunala += 5) {
+                  $osnovnaCijena = $brojRacunala * $cijenaPoRacunalu;
+                  $imaPopust = ($brojRacunala >= $popustPrag);
+
+                  if ($imaPopust) {
+                      $konacnaCijena = $osnovnaCijena * (1 - $popustPostotak);
+                      $klasaReda = 'class="red-popust"';
+                      $napomena = '<span class="oznaka-povoljno">10 % popusta</span>';
+                  } else {
+                      $konacnaCijena = $osnovnaCijena;
+                      $klasaReda = '';
+                      $napomena = 'Redovna cijena';
+                  }
+
+                  $formatiranaCijena = number_format($konacnaCijena, 2, ',', '.') . ' €';
+
+                  echo "<tr {$klasaReda}>";
+                  echo "<td class=\"td-naziv\" data-label=\"Broj računala\"><strong>{$brojRacunala}</strong> računala</td>";
+                  echo "<td class=\"td-ukupno\" data-label=\"Mjesečno\">{$formatiranaCijena}</td>";
+                  echo "<td class=\"td-clanovi\" data-label=\"Napomena\">{$napomena}</td>";
+                  echo "</tr>\n";
+              }
+              ?>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <!-- 3. Kontakt forma prije podnožja -->
