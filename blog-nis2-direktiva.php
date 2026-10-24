@@ -1,7 +1,6 @@
 <?php
-// TSD-4RT | IN | 19.10.2026.
+// TSD-4RT | IN | 24.10.2026.
 ?>
-    <!-- Zaglavlje -->
     <?php
       $naslovStranice = "NIS2 direktiva u RH";
       $trenutnaStranica = "blog-nis2-direktiva";
@@ -149,7 +148,6 @@
         </div>
       </article>
 
-      <!-- Kontakt forma prije podnožja -->
       <section class="form-section">
         <h2 class="section-title">Provjerite usklađenost vaše organizacije</h2>
         <p class="section-subtitle">

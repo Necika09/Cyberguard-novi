@@ -1,12 +1,11 @@
 <?php
-// TSD-4RT | IN | 19.10.2026.
+// TSD-4RT | IN | 24.10.2026.
 ?>
 <!DOCTYPE html>
 <html lang="hr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Ovdje PHP ispisuje naslov koji je podstranica zadala prije include-a -->
   <title><?php echo $naslovStranice ?? 'Početna'; ?> | CyberGuard Solutions</title>
   <link rel="icon" type="image/svg+xml" href="img/cyberguard-logo.svg">
   <link rel="stylesheet" href="css/style.css">

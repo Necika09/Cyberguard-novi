@@ -1,26 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Meka hladna paleta (umjesto blještave bijele) */
-  --bg-page: #f1f5f9;              /* Ugodna tehnička slate podloga */
-  --bg-surface: #ffffff;           /* Čisti paneli za sadržaj */
-  --bg-surface-subtle: #e2e8f0;    /* Sekundarni elementi i polja */
-  --bg-dark: #0a1322;              /* Duboka tamnoplava za podnožje */
+  --bg-page: #f1f5f9;
+  --bg-surface: #ffffff;
+  --bg-surface-subtle: #e2e8f0;
+  --bg-dark: #0a1322;
 
-  /* Brend boje usklađene s novim logotipom */
   --brand-navy: #0b2545;
   --brand-blue: #0969da;
   --brand-cyan: #0099cc;
   --brand-hover: #0550ae;
 
-  /* Tipografija i tekst */
   --text-main: #0f172a;
   --text-body: #334155;
   --text-muted: #64748b;
   --text-light: #ffffff;
   --text-light-muted: #94a3b8;
 
-  /* Obrubi */
   --border-color: #cbd5e1;
   --border-subtle: #e2e8f0;
 
@@ -45,7 +41,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* 1. Header i navigacija */
 header {
   background-color: var(--bg-surface);
   border-bottom: 2px solid var(--border-color);
@@ -142,7 +137,6 @@ nav a.active {
   color: var(--brand-blue);
 }
 
-/* 2. Glavni raspored */
 main {
   flex: 1;
   max-width: 1240px;
@@ -176,7 +170,6 @@ main {
   margin-bottom: 2.5rem;
 }
 
-/* 3. Hero sekcija - dinamična s mekom plavkastom pozadinom */
 .hero {
   background: linear-gradient(135deg, #0b2545 0%, #103460 100%);
   color: #ffffff;
@@ -215,7 +208,6 @@ main {
   margin-bottom: 2rem;
 }
 
-/* 4. Gumbi */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -246,7 +238,6 @@ main {
   transform: translateY(-1px);
 }
 
-/* 5. Kartice - čisti bijeli paneli na slate pozadini s plavim vrhom */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -291,7 +282,6 @@ main {
   font-weight: 600;
 }
 
-/* 6. Forme */
 .form-section {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-color);
@@ -345,9 +335,8 @@ main {
   box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.12);
 }
 
-/* Stilovi za validaciju forme */
 .field-error {
-  color: #da1e28; /* diskretna crvena boja upozorenja */
+  color: #da1e28;
   font-size: 0.8rem;
   font-weight: 500;
   margin-top: 0.35rem;
@@ -363,7 +352,6 @@ main {
   outline: 2px solid #da1e28;
 }
 
-/* 7. Cjenik kartice */
 .price-card {
   border-top: 4px solid var(--brand-navy);
 }
@@ -423,7 +411,6 @@ main {
   display: block;
 }
 
-/* 9. Podnožje - tamnoplavo, autoritativno */
 footer {
   background-color: var(--bg-dark);
   color: var(--text-light);
@@ -501,7 +488,6 @@ footer {
   font-family: var(--font-mono);
 }
 
-/* 10. Obavijest o kolačićima */
 .cookie-banner {
   position: fixed;
   bottom: 0;
@@ -540,7 +526,6 @@ footer {
   display: none !important;
 }
 
-/* Stilovi za slike u karticama, stručnjacima i člancima */
 .card-img {
   width: 100%;
   height: 180px;
@@ -569,10 +554,6 @@ footer {
   display: block;
 }
 
-/* ===================================================
-   Podnožje: Dodatni detalji i Radno vrijeme (C1)
-   =================================================== */
-
 .footer-godine-rada {
   margin-top: 0.5rem;
   font-weight: 500;
@@ -596,7 +577,6 @@ footer {
   border: 0;
 }
 
-/* Radno vrijeme (Blok 6 - C1) */
 .tabela-radno-vrijeme {
   width: 100%;
   margin-bottom: 0.85rem;
@@ -637,8 +617,6 @@ footer {
   font-size: 0.8rem;
 }
 
-/* Cjenik: Redizajnirana profesionalna tablica (Razina 1) */
-
 .price-tag small {
   font-size: 0.9rem;
   font-weight: normal;
@@ -677,15 +655,16 @@ footer {
   text-align: left;
 }
 
-/* Zaglavlje tablice */
 .tabela-usluga thead th {
   background-color: var(--brand-navy);
   color: #ffffff;
-  padding: 14px 18px;
+  padding: 14px 14px;
   font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
   text-transform: uppercase;
+  white-space: nowrap;
+  vertical-align: middle;
   border-bottom: 2px solid var(--brand-blue);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -699,21 +678,20 @@ footer {
 }
 
 .tabela-usluga thead th.th-clanovi {
-  color: #38bdf8; /* Tirkizno istaknuto */
+  color: #38bdf8;
 }
 
-/* Tijelo tablice */
 .tabela-usluga tbody tr {
   border-bottom: 1px solid var(--border-color);
   transition: background-color 0.15s ease;
 }
 
 .tabela-usluga tbody tr:nth-child(even) {
-  background-color: #f8fafc; /* Suptilna zebra podloga */
+  background-color: #f8fafc;
 }
 
 .tabela-usluga tbody tr:hover {
-  background-color: #f1f5f9; /* Isticanje pri prelasku mišem */
+  background-color: #f1f5f9;
 }
 
 .tabela-usluga tbody tr:last-child {
@@ -730,7 +708,6 @@ footer {
   border-right: none;
 }
 
-/* Stiliziranje pojedinačnih ćelija */
 .td-naziv {
   color: var(--brand-navy);
   font-weight: 600;
@@ -751,7 +728,7 @@ footer {
 .td-clanovi {
   text-align: right;
   font-family: var(--font-mono);
-  white-space: nowrap; /* Sprječava stiskanje iznosa */
+  white-space: nowrap;
 }
 
 .td-broj {
@@ -770,10 +747,9 @@ footer {
 .td-clanovi {
   font-weight: 700;
   color: var(--brand-blue);
-  background-color: rgba(9, 105, 218, 0.03); /* Lagano plavkasto istaknuto */
+  background-color: rgba(9, 105, 218, 0.03);
 }
 
-/* Značka "Povoljno" (Razina 1) */
 .oznaka-povoljno {
   display: inline-block;
   background-color: #dcfce7;
@@ -789,7 +765,6 @@ footer {
   vertical-align: middle;
 }
 
-/* Okvir za rate */
 .rate-box {
   margin-top: 6px;
   padding: 5px 8px;
@@ -813,69 +788,97 @@ footer {
 }
 
 .tabela-radno-vrijeme tr.dan-aktivno td {
-  color: #38bdf8; /* svijetlo plava oznaka */
+  color: #38bdf8;
   font-weight: 700;
 }
 
-/* 11. Responzivnost */
-@media (max-width: 768px) {
-  .header-container {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    height: auto;
-    padding: 0.85rem 1.25rem;
-  }
+.kalendar-sekcija {
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
 
-  .menu-toggle {
-    display: block; /* Prikazuje se samo na manjim ekranima */
-  }
+.kalendar-naslov {
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
 
-  nav {
-    display: none; /* Po defaultu skriven */
-    width: 100%;
-    margin-top: 0.75rem;
-    border-top: 1px solid var(--border-color);
-  }
+.kalendar-podnaslov {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
 
-  nav.open {
-    display: block; /* Prikazuje se kad JS doda klasu .open */
-  }
+.tabela-kalendar {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
 
-  nav ul {
-    flex-direction: column;
-    height: auto;
-    gap: 0;
-    padding: 0.5rem 0;
-  }
+.tabela-kalendar th {
+  background-color: var(--brand-navy);
+  color: var(--text-light);
+  padding: 0.85rem 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid #1e3a5f;
+  letter-spacing: 0.5px;
+}
 
-  nav a {
-    display: block;
-    width: 100%;
-    padding: 0.75rem 1rem;
-    height: auto;
-    border-bottom: none;
-    border-left: 3px solid transparent;
-  }
+.tabela-kalendar th.th-vikend {
+  background-color: #081d38;
+  color: #93c5fd;
+}
 
-  nav a:hover,
-  nav a.active {
-    border-left-color: var(--brand-blue);
-    background-color: rgba(9, 105, 218, 0.05);
-  }
+.tabela-kalendar td {
+  height: 52px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-color);
+  transition: all 0.15s ease;
+}
 
-  /* Ostatak tvojih postojećih pravila za hero i cookie banner ostaje isti */
-  .hero {
-    padding: 2.5rem 1.5rem;
-  }
-  .hero h1 {
-    font-size: 2rem;
-  }
-  .cookie-banner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.tabela-kalendar td.kalendar-prazno {
+  background-color: #f8fafc;
+}
 
-  /* Responzivnost tablice cjenika za tablete i mobitele */
+.tabela-kalendar td.kalendar-dan {
+  font-weight: 600;
+  color: var(--text-main);
+  background-color: var(--bg-surface);
+}
+
+.tabela-kalendar td.kalendar-dan:hover {
+  background-color: #eff6ff;
+  color: var(--brand-blue);
+  cursor: pointer;
+}
+
+.tabela-kalendar td.vikend {
+  background-color: #f1f5f9;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.tabela-kalendar td.vikend:hover {
+  background-color: #e2e8f0;
+}
+
+.tabela-kalendar td.danas {
+  background-color: var(--brand-blue) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 2px #1d4ed8;
+}
+
   @media (max-width: 860px) {
     .tabela-responzivno {
       border: none;
@@ -889,7 +892,7 @@ footer {
     }
 
     .tabela-usluga thead {
-      display: none; /* Sakrij klasično zaglavlje */
+      display: none;
     }
 
     .tabela-usluga tbody {
@@ -911,7 +914,7 @@ footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap; /* Omogućuje prelamanje ako sadržaj ne stane */
+      flex-wrap: wrap;
       gap: 0.5rem;
       padding: 0.65rem 0;
       border-right: none;
@@ -924,7 +927,6 @@ footer {
       border-bottom: none;
     }
 
-    /* Oznaka stupca s lijeve strane */
     .tabela-usluga td::before {
       content: attr(data-label);
       font-weight: 600;
@@ -952,14 +954,13 @@ footer {
       white-space: normal;
     }
 
-    /* Popravak za ukupno i okvir rata da nikada ne bježi van */
     .td-ukupno {
       flex-wrap: wrap;
       align-items: flex-end;
     }
 
     .td-ukupno .rate-box {
-      width: 100%; /* Spušta okvir s ratama u novi red ispod iznosa */
+      width: 100%;
       margin-top: 0.4rem;
       box-sizing: border-box;
       text-align: right;
@@ -972,6 +973,3 @@ footer {
       margin-top: 0.35rem;
     }
   }
-
-}
-

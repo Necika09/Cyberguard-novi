@@ -1,7 +1,6 @@
 <?php
-// TSD-4RT | IN | 19.10.2026.
+// TSD-4RT | IN | 24.10.2026.
 ?>
-    <!-- Zaglavlje -->
     <?php
       $naslovStranice = "Phishing napadi";
       $trenutnaStranica = "blog-phishing-napadi";
@@ -10,7 +9,6 @@
     ?>
 
     <main>
-      <!-- Povratna poveznica (Breadcrumb) -->
       <p style="margin-bottom: 1.5rem">
         <a
           href="novosti.php"
@@ -23,7 +21,6 @@
         >
       </p>
 
-      <!-- Članak -->
       <article class="card" style="margin-bottom: 3rem; padding: 2.5rem">
         <p
           style="
@@ -152,7 +149,6 @@
         </div>
       </article>
 
-      <!-- Kontakt forma prije podnožja -->
       <section class="form-section">
         <h2 class="section-title">Zatražite simulaciju phishing kampanje</h2>
         <p class="section-subtitle">
@@ -192,7 +188,6 @@
       </section>
     </main>
 
-    <!-- Podnožje -->
     <?php
       include "dijelovi/podnozje.php";
     ?>

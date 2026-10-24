@@ -1,19 +1,15 @@
 <?php
-// TSD-4RT | IN | 19.10.2026.
+// TSD-4RT | IN | 24.10.2026.
 
-// Razina 1 (Blok 5): Godina osnutka i izračun godina rada
 $godinaOsnutka = 2019;
 $godineRada = (int)date("Y") - $godinaOsnutka;
 
-// Razina 1 (Blok 5): E-mail s razmacima očišćen pomoću trim() i strtolower()
 $siroviEmail = "  Info@SigurnaMreza.HR ";
 $cistiEmail = strtolower(trim($siroviEmail));
 
-// Blok 6 (C1 / Razina 3): Trenutni dan (1 = ponedjeljak ... 7 = nedjelja) i sat (0-23)
 $dan = (int)date("N");
 $sat = (int)date("G");
 
-// Provjera trenutnog radnog statusa
 if ($dan >= 1 && $dan <= 5 && $sat >= 8 && $sat < 16) {
     $statusPoruka = "Otvoreno — radimo do 16:00";
     $statusKlasa = "status-otvoreno";
@@ -21,7 +17,6 @@ if ($dan >= 1 && $dan <= 5 && $sat >= 8 && $sat < 16) {
     $statusPoruka = "Otvoreno — radimo do 13:00";
     $statusKlasa = "status-otvoreno";
 } else {
-    // Razina 2: Logika poruke sljedećeg otvaranja
     if ($dan >= 1 && $dan <= 5 && $sat < 8) {
         $statusPoruka = "Zatvoreno — otvaramo danas u 8:00";
     } elseif ($dan >= 1 && $dan <= 4 && $sat >= 16) {
@@ -31,7 +26,6 @@ if ($dan >= 1 && $dan <= 5 && $sat >= 8 && $sat < 16) {
     } elseif ($dan === 6 && $sat < 9) {
         $statusPoruka = "Zatvoreno — otvaramo danas u 9:00";
     } else {
-        // Subota nakon 13:00 ili cijela nedjelja
         $statusPoruka = "Zatvoreno — otvaramo u ponedjeljak u 8:00";
     }
     $statusKlasa = "status-zatvoreno";
@@ -66,7 +60,6 @@ if ($dan >= 1 && $dan <= 5 && $sat >= 8 && $sat < 16) {
           </div>
         </div>
 
-        <!-- Razina 3: Tablica generirana for petljom (1..7) i match izrazom, stilizirana klasama iz tvog style.css -->
         <div class="footer-col">
           <h4>Radno vrijeme</h4>
           <table class="tabela-radno-vrijeme">
@@ -89,7 +82,6 @@ if ($dan >= 1 && $dan <= 5 && $sat >= 8 && $sat < 16) {
                       7             => "Zatvoreno"
                   };
 
-                  // Razina 3b: Isticanje današnjeg dana (tvoj style.css koristi klasu dan-aktivno)
                   $redKlasa = ($i === $dan) ? ' class="dan-aktivno"' : '';
 
                   echo "<tr{$redKlasa}><td>{$nazivDana}</td><td>{$satiRada}</td></tr>\n              ";
@@ -145,7 +137,6 @@ if ($dan >= 1 && $dan <= 5 && $sat >= 8 && $sat < 16) {
       </div>
     </footer>
 
-    <!-- Obvezni kolačići -->
     <aside id="cookie-banner" class="cookie-banner">
       <h4>Obavijest o kolačićima</h4>
       <p>

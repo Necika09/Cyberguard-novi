@@ -1,7 +1,6 @@
 <?php
-// TSD-4RT | IN | 19.10.2026.
+// TSD-4RT | IN | 24.10.2026.
 ?>
-    <!-- Zaglavlje -->
     <?php
       $naslovStranice = "Novosti";
       $trenutnaStranica = "novosti";
@@ -16,7 +15,6 @@
       </p>
 
       <div class="grid-container">
-        <!-- Članak 1: Phishing -->
         <article class="card">
           <img
             src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80"
@@ -52,7 +50,6 @@
           </p>
         </article>
 
-        <!-- Članak 2: NIS2 direktiva -->
         <article class="card">
           <img
             src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80"
@@ -88,7 +85,6 @@
           </p>
         </article>
 
-        <!-- Članak 3: Zaštita oblaka -->
         <article class="card">
           <img
             src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80"
@@ -125,7 +121,6 @@
         </article>
       </div>
 
-      <!-- Forma za prijedlog teme -->
       <section class="form-section">
         <h2 class="section-title">Predložite temu za blog</h2>
         <p class="section-subtitle">
@@ -149,7 +144,6 @@
       </section>
     </main>
 
-    <!-- Podnožje -->
     <?php
       include "dijelovi/podnozje.php";
     ?>

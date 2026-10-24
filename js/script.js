@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // 1. Upravljanje obaveznim kolačićima
   const cookieBanner = document.getElementById("cookie-banner");
   const acceptBtn = document.getElementById("accept-cookies");
 
@@ -14,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 2. Funkcionalnost Newsletter forme
   const newsletterForms = document.querySelectorAll(".newsletter-form");
   newsletterForms.forEach(function (form) {
     form.addEventListener("submit", function (e) {
@@ -31,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // 3. Funkcionalnost kontakt forme s provjerom duljine poruke
   const contactForms = document.querySelectorAll(".contact-form");
 
   contactForms.forEach(function (form) {
@@ -39,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!messageField) return;
 
-    // Element za prikaz greške ispod polja
     let errorElem = messageField.parentElement.querySelector(".field-error");
     if (!errorElem) {
       errorElem = document.createElement("small");
@@ -47,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
       messageField.parentElement.appendChild(errorElem);
     }
 
-    // Uklanjanje greške čim korisnik počne ispravljati tekst
     messageField.addEventListener("input", function () {
       if (messageField.value.trim().length >= 20) {
         errorElem.textContent = "";
@@ -59,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const messageText = messageField.value.trim();
 
       if (messageText.length < 20) {
-        e.preventDefault(); // Zaustavi slanje forme
+        e.preventDefault();
         const remaining = 20 - messageText.length;
         errorElem.textContent = `Poruka mora sadržavati najmanje 20 znakova (nedostaje još ${remaining}).`;
         messageField.classList.add("input-error");
@@ -67,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // Ako je sve u redu
       errorElem.textContent = "";
       messageField.classList.remove("input-error");
       e.preventDefault();
@@ -78,14 +72,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // 4. Hamburger izbornik za mobitele
   const menuToggle = document.getElementById("menu-toggle");
   const mainNav = document.getElementById("main-nav");
 
   if (menuToggle && mainNav) {
     menuToggle.addEventListener("click", function () {
       mainNav.classList.toggle("open");
-      // Mijenja ikonicu ☰ u ✕ kad je otvoreno
       menuToggle.textContent = mainNav.classList.contains("open") ? "✕" : "☰";
     });
   }

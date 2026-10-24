@@ -1,5 +1,5 @@
 <?php
-// TSD-4RT | IN | 19.10.2026.
+// TSD-4RT | IN | 24.10.2026.
 ?>
     <?php
       $naslovStranice = "O nama";
@@ -54,7 +54,6 @@
         </div>
       </div>
 
-      <!-- Kontakt forma prije podnožja -->
       <section class="form-section">
         <h2 class="section-title">Zainteresirani za suradnju?</h2>
         <p class="section-subtitle">

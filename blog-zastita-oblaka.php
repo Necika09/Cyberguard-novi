@@ -1,7 +1,6 @@
 <?php
-// TSD-4RT | IN | 19.10.2026.
+// TSD-4RT | IN | 24.10.2026.
 ?>
-    <!-- Zaglavlje -->
     <?php
       $naslovStranice = "Zaštita oblaka";
       $trenutnaStranica = "blog-zastita-oblaka";
@@ -159,7 +158,6 @@
         </div>
       </article>
 
-      <!-- Kontakt forma prije podnožja -->
       <section class="form-section">
         <h2 class="section-title">
           Zatražite reviziju vaše infrastrukture u oblaku

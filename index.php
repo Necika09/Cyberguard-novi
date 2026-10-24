@@ -1,5 +1,5 @@
 <?php
-// TSD-4RT | IN | 19.10.2026.
+// TSD-4RT | IN | 24.10.2026.
 
 $sat = (int) date("G");
 
@@ -11,7 +11,6 @@ if ($sat < 12) {
     $pozdrav = "Dobra večer";
 }
 ?>
-    <!-- Zaglavlje s logotipom i navigacijom -->
     <?php
       $naslovStranice = "Početna";
       $trenutnaStranica = "index";
@@ -20,7 +19,6 @@ if ($sat < 12) {
     ?>
 
     <main>
-      <!-- Hero sekcija -->
       <section class="hero">
         <p class="hero-pozdrav">
           <?php echo $pozdrav; ?>! Dobrodošli u CyberGuard Solutions.
@@ -33,7 +31,59 @@ if ($sat < 12) {
         <a href="kontakt.php" class="btn">Zatražite sigurnosnu procjenu</a>
       </section>
 
-      <!-- Sažetak ključnih područja -->
+      <?php
+
+      $recenzije = [
+          [
+              "ime" => "Marko Horvat",
+              "tvrtka" => "Adria Logistics d.o.o.",
+              "ocjena" => 5,
+              "tekst" => "Nakon penetracijskog testiranja otkrili smo kritične propuste u web trgovini prije puštanja u rad. Vrhunska i brza usluga!"
+          ],
+          [
+              "ime" => "Ivana Kovač",
+              "tvrtka" => "TechFin Solutions",
+              "ocjena" => 4,
+              "tekst" => "Edukacija zaposlenika o phishing napadima drastično je smanjila broj sumnjivih klikova. Preporuka za svaki tim."
+          ],
+          [
+              "ime" => "Davor Novak",
+              "tvrtka" => "Alpha Medika",
+              "ocjena" => 5,
+              "tekst" => "Implementacija SOC nadzora donijela nam je miran san i potpunu usklađenost sa strogim sigurnosnim regulativama."
+          ]
+        ];
+      ?>
+
+      <section class="card recenzije-sekcija">
+          <h2 class="section-title">Što kažu naši klijenti</h2>
+          <p class="section-subtitle">Iskustva tvrtki koje su povjerile sigurnost svojih sustava CyberGuard timu</p>
+
+          <div class="grid-container recenzije-grid">
+              <?php foreach ($recenzije as $r): ?>
+                  <div class="card recenzija-kartica">
+                      <div class="recenzija-zvjezdice">
+                          <?php
+                          // Pune zvjezdice pomoću petlje
+                          for ($z = 1; $z <= $r['ocjena']; $z++) {
+                              echo '<span class="zvijezda-puna">★</span>';
+                          }
+                          // Prazne zvjezdice do ukupno 5
+                          for ($p = 1; $p <= (5 - $r['ocjena']); $p++) {
+                              echo '<span class="zvijezda-prazna">☆</span>';
+                          }
+                          ?>
+                      </div>
+                      <p class="recenzija-tekst">"<?php echo $r['tekst']; ?>"</p>
+                      <div class="recenzija-autor">
+                          <strong><?php echo $r['ime']; ?></strong><br>
+                          <small><?php echo $r['tvrtka']; ?></small>
+                      </div>
+                  </div>
+              <?php endforeach; ?>
+          </div>
+      </section>
+
       <h2 class="section-title">Ključna područja zaštite</h2>
       <p class="section-subtitle">
         Stručna rješenja prilagođena modernim poslovnim izazovima
@@ -78,7 +128,6 @@ if ($sat < 12) {
         </div>
       </div>
 
-      <!-- Funkcionalna kontakt forma prije podnožja -->
       <section class="form-section">
         <h2 class="section-title">Brzi kontakt</h2>
         <p class="section-subtitle">
@@ -129,7 +178,6 @@ if ($sat < 12) {
       </section>
     </main>
 
-    <!-- Podnožje -->
     <?php
       include "dijelovi/podnozje.php";
     ?>

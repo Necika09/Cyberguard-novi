@@ -1,5 +1,5 @@
 <?php
-// TSD-4RT | IN | 19.10.2026.
+// TSD-4RT | IN | 24.10.2026.
 
 echo "--- A1: Usporedbe ---\n";
 var_dump(5 == "5");
@@ -43,7 +43,7 @@ if ($godina < 2023) {
     echo $formatEur;
 }
 
-$brojDana = (int) date("N"); // 1 = ponedjeljak ... 7 = nedjelja
+$brojDana = (int) date("N");
 
 $nazivDana = match ($brojDana) {
     1 => "ponedjeljak",
@@ -61,7 +61,6 @@ echo "Danas je: " . $nazivDana;
 $imena = ["Karlo", "zdenko", "ana"];
 
 foreach ($imena as $ime) {
-    // Uzimamo prvo slovo i pretvaramo ga u malo radi usporedbe
     $prvoSlovo = mb_strtolower(mb_substr($ime, 0, 1));
 
     switch ($prvoSlovo) {
