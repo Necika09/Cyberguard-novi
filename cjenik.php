@@ -1,5 +1,5 @@
 <?php
-// TSD-4RT | IN | 24.10.2026.
+// TSD-4RT | IN | 01.11.2026.
 $naslovStranice = "Cjenovnik usluga";
 $trenutnaStranica = "cjenik";
 
@@ -9,19 +9,26 @@ $usluge = [
     [
         "naziv" => "Procjena rizika",
         "opis" => "Sveobuhvatna procjena sigurnosnih rizika za digitalnu infrastrukturu tvrtke.",
-        "cijenaBezPdv" => 450
+        "cijena" => 450
     ],
     [
         "naziv" => "Sigurnosna analiza",
         "opis" => "Detaljna penetracijska provjera ranjivosti i sigurnosnih protokola sustava.",
-        "cijenaBezPdv" => 1280
+        "cijena" => 1280
     ],
     [
         "naziv" => "Edukacija zaposlenika",
         "opis" => "Interaktivne radionice o prepoznavanju phishing prijetnji i socijalnog inženjeringa.",
-        "cijenaBezPdv" => 300
+        "cijena" => 300
+    ],
+    [
+        "naziv" => "Zaštita poslužitelja u oblaku",
+        "opis" => "Konfiguracija IAM politika, vatrozida i enkripcije pohrane u oblaku.",
+        "cijena" => 650
     ]
 ];
+
+$zbrojUkupno = 0;
 
 $paket1_naziv = "Basic Audit";
 $paket1_cijena = "850";
@@ -128,17 +135,17 @@ include "dijelovi/zaglavlje.php";
             </thead>
             <tbody>
               <?php
-              for ($i = 0; $i < count($usluge); $i++):
-                  $u = $usluge[$i];
-                  $cijenaBezPdv = $u["cijenaBezPdv"];
-                  $pdv = $cijenaBezPdv * PDV;
-                  $ukupno = $cijenaBezPdv + $pdv;
+              foreach ($usluge as $u):
+                  $cijena = $u["cijena"];
+                  $pdv = $cijena * PDV;
+                  $ukupno = $cijena + $pdv;
                   $clanovi = round($ukupno * 0.85);
+                  $zbrojUkupno += $ukupno;
               ?>
               <tr>
                 <td class="td-naziv">
                   <?php echo $u["naziv"]; ?>
-                  <?php if ($cijenaBezPdv < 500): ?>
+                  <?php if ($cijena < 500): ?>
                     <span class="oznaka-povoljno">Povoljno</span>
                   <?php endif; ?>
                 </td>
@@ -146,7 +153,7 @@ include "dijelovi/zaglavlje.php";
                   <?php echo mb_substr($u["opis"], 0, 40) . "…"; ?>
                 </td>
                 <td class="td-broj">
-                  <?php echo number_format($cijenaBezPdv, 2, ',', '.'); ?> €
+                  <?php echo number_format($cijena, 2, ',', '.'); ?> €
                 </td>
                 <td class="td-pdv">
                   <?php echo number_format($pdv, 2, ',', '.'); ?> €
@@ -168,9 +175,14 @@ include "dijelovi/zaglavlje.php";
                   <?php echo number_format($clanovi, 2, ',', '.'); ?> €
                 </td>
               </tr>
-              <?php endfor; ?>
+              <?php endforeach; ?>
             </tbody>
           </table>
+        </div>
+
+        <div style="margin-top: 1.25rem; padding: 1rem 1.25rem; background: var(--bg-surface-alt, rgba(255,255,255,0.03)); border: 1px solid var(--border-color); border-radius: 6px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+          <span>Ukupan broj usluga u ponudi: <strong><?php echo count($usluge); ?></strong></span>
+          <span style="font-size: 1.05rem;">Zbroj svih usluga s PDV-om: <strong><?php echo number_format($zbrojUkupno, 2, ',', '.'); ?> €</strong></span>
         </div>
 
         <p class="cjenik-azurirano">

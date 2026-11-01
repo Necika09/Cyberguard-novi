@@ -1,5 +1,14 @@
 <?php
-// TSD-4RT | IN | 24.10.2026.
+// TSD-4RT | IN | 01.11.2026.
+
+$izbornik = [
+    "o-nama.php"        => "O nama",
+    "strucnjaci.php"    => "Zaposleni stručnjaci",
+    "novosti.php"       => "Novosti i blogovi",
+    "misija-vizija.php" => "Misija i vizija",
+    "cjenik.php"        => "Cjenovnik usluga",
+    "kontakt.php"       => "Kontakt"
+];
 ?>
 <!DOCTYPE html>
 <html lang="hr">
@@ -22,14 +31,16 @@
 
       <nav id="main-nav">
         <ul>
-          <li><a href="o-nama.php" class="<?php if (($trenutnaStranica ?? '') === 'o-nama') echo 'active'; ?>">O nama</a></li>
-          <li><a href="strucnjaci.php" class="<?php if (($trenutnaStranica ?? '') === 'strucnjaci') echo 'active'; ?>">Zaposleni stručnjaci</a></li>
-          <li><a href="novosti.php" class="<?php if (($trenutnaStranica ?? '') === 'novosti') echo 'active'; ?>">Novosti i blogovi</a></li>
-          <li><a href="misija-vizija.php" class="<?php if (($trenutnaStranica ?? '') === 'misija-vizija') echo 'active'; ?>">Misija i vizija</a></li>
-          <li><a href="cjenik.php" class="<?php if (($trenutnaStranica ?? '') === 'cjenik') echo 'active'; ?>">Cjenovnik usluga</a></li>
-          <li><a href="kontakt.php" class="<?php if (($trenutnaStranica ?? '') === 'kontakt') echo 'active'; ?>">Kontakt</a></li>
+          <?php foreach ($izbornik as $datoteka => $naziv): 
+              $jeAktivna = (isset($trenutnaStranica) && ($trenutnaStranica === $datoteka || $trenutnaStranica . '.php' === $datoteka));
+          ?>
+            <li>
+              <a href="<?php echo $datoteka; ?>" class="<?php echo $jeAktivna ? 'active' : ''; ?>">
+                <?php echo $naziv; ?>
+              </a>
+            </li>
+          <?php endforeach; ?>
         </ul>
       </nav>
     </div>
   </header>
-
