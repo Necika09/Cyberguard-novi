@@ -1,6 +1,8 @@
 <?php
 // TSD-4RT | IN | 02.11.2026.
 
+require_once __DIR__ . "/funkcije.php";
+
 $godinaOsnutka = 2019;
 $godineRada = (int)date("Y") - $godinaOsnutka;
 
@@ -10,11 +12,12 @@ $cistiEmail = strtolower(trim($siroviEmail));
 $dan = (int)date("N");
 $sat = (int)date("G");
 
-if ($dan >= 1 && $dan <= 5 && $sat >= 8 && $sat < 16) {
-    $statusPoruka = "Otvoreno — radimo do 16:00";
-    $statusKlasa = "status-otvoreno";
-} elseif ($dan === 6 && $sat >= 9 && $sat < 13) {
-    $statusPoruka = "Otvoreno — radimo do 13:00";
+if (jeOtvoreno($dan, $sat)) {
+    if ($dan === 6) {
+        $statusPoruka = "Otvoreno — radimo do 13:00";
+    } else {
+        $statusPoruka = "Otvoreno — radimo do 16:00";
+    }
     $statusKlasa = "status-otvoreno";
 } else {
     if ($dan >= 1 && $dan <= 5 && $sat < 8) {

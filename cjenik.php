@@ -3,13 +3,8 @@
 $naslovStranice = "Cjenovnik usluga";
 $trenutnaStranica = "cjenik";
 
+require_once "dijelovi/funkcije.php";
 require "podaci/usluge.php";
-
-const PDV = 0.25;
-
-function cijenaSPdv($cijena) {
-    return $cijena * (1 + PDV);
-}
 
 if (!isset($usluge)) {
     $usluge = [
@@ -161,26 +156,26 @@ include "dijelovi/zaglavlje.php";
                   <?php echo mb_substr($u["opis"], 0, 40) . "…"; ?>
                 </td>
                 <td class="td-broj">
-                  <?php echo number_format($cijena, 2, ',', '.'); ?> €
+                  <?php echo formatirajCijenu($cijena); ?>
                 </td>
                 <td class="td-pdv">
-                  <?php echo number_format($pdv, 2, ',', '.'); ?> €
+                  <?php echo formatirajCijenu($pdv); ?>
                 </td>
                 <td class="td-ukupno">
-                  <?php echo number_format($ukupno, 2, ',', '.'); ?> €
+                  <?php echo formatirajCijenu($ukupno); ?>
                   <?php if ($ukupno > 1000): ?>
                     <?php 
                       $rata = round($ukupno / 3, 2); 
                       $zbrojRata = $rata * 3;
                     ?>
                     <div class="rate-box">
-                      3 rate po <?php echo number_format($rata, 2, ',', '.'); ?> €<br>
-                      <span class="rate-zgrobit">(zbroj: <?php echo number_format($zbrojRata, 2, ',', '.'); ?> €)</span>
+                      3 rate po <?php echo formatirajCijenu($rata); ?><br>
+                      <span class="rate-zgrobit">(zbroj: <?php echo formatirajCijenu($zbrojRata); ?>)</span>
                     </div>
                   <?php endif; ?>
                 </td>
                 <td class="td-clanovi">
-                  <?php echo number_format($clanovi, 2, ',', '.'); ?> €
+                  <?php echo formatirajCijenu($clanovi); ?>
                 </td>
               </tr>
               <?php endforeach; ?>
@@ -190,7 +185,7 @@ include "dijelovi/zaglavlje.php";
 
         <div style="margin-top: 1.25rem; padding: 1rem 1.25rem; background: var(--bg-surface-alt, rgba(255,255,255,0.03)); border: 1px solid var(--border-color); border-radius: 6px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
           <span>Ukupan broj usluga u ponudi: <strong><?php echo count($usluge); ?></strong></span>
-          <span style="font-size: 1.05rem;">Zbroj svih usluga s PDV-om: <strong><?php echo number_format($zbrojUkupno, 2, ',', '.'); ?> €</strong></span>
+          <span style="font-size: 1.05rem;">Zbroj svih usluga s PDV-om: <strong><?php echo formatirajCijenu($zbrojUkupno); ?></strong></span>
         </div>
 
         <p class="cjenik-azurirano">

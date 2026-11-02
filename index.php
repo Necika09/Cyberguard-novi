@@ -1,6 +1,8 @@
 <?php
 // TSD-4RT | IN | 02.11.2026.
 
+require_once "dijelovi/funkcije.php";
+
 $sat = (int) date("G");
 
 if ($sat < 12) {
@@ -65,14 +67,7 @@ include "dijelovi/zaglavlje.php";
               ?>
                   <div class="card recenzija-kartica">
                       <div class="recenzija-zvjezdice">
-                          <?php
-                          for ($z = 1; $z <= $r['ocjena']; $z++) {
-                              echo '<span class="zvijezda-puna">★</span>';
-                          }
-                          for ($p = 1; $p <= (5 - $r['ocjena']); $p++) {
-                              echo '<span class="zvijezda-prazna">☆</span>';
-                          }
-                          ?>
+                          <?php echo zvjezdice($r['ocjena']); ?>
                       </div>
                       <p class="recenzija-tekst">"<?php echo $r['tekst']; ?>"</p>
                       <div class="recenzija-autor">
