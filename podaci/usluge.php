@@ -1,0 +1,25 @@
+<?php
+// TSD-4RT | IN | 02.11.2026.
+
+$usluge = [
+    [
+        "naziv"  => "Procjena rizika",
+        "opis"   => "Sveobuhvatna procjena sigurnosnih rizika za digitalnu infrastrukturu tvrtke.",
+        "cijena" => 450
+    ],
+    [
+        "naziv"  => "Sigurnosna analiza",
+        "opis"   => "Detaljna penetracijska provjera ranjivosti i sigurnosnih protokola sustava.",
+        "cijena" => 1280
+    ],
+    [
+        "naziv"  => "Edukacija zaposlenika",
+        "opis"   => "Interaktivne radionice o prepoznavanju phishing prijetnji i socijalnog inženjeringa.",
+        "cijena" => 300
+    ],
+    [
+        "naziv"  => "Zaštita poslužitelja u oblaku",
+        "opis"   => "Konfiguracija IAM politika, vatrozida i enkripcije pohrane u oblaku.",
+        "cijena" => 650
+    ]
+];

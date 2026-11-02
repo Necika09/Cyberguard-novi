@@ -1,32 +1,40 @@
 <?php
-// TSD-4RT | IN | 01.11.2026.
+// TSD-4RT | IN | 02.11.2026.
 $naslovStranice = "Cjenovnik usluga";
 $trenutnaStranica = "cjenik";
 
+require "podaci/usluge.php";
+
 const PDV = 0.25;
 
-$usluge = [
-    [
-        "naziv" => "Procjena rizika",
-        "opis" => "Sveobuhvatna procjena sigurnosnih rizika za digitalnu infrastrukturu tvrtke.",
-        "cijena" => 450
-    ],
-    [
-        "naziv" => "Sigurnosna analiza",
-        "opis" => "Detaljna penetracijska provjera ranjivosti i sigurnosnih protokola sustava.",
-        "cijena" => 1280
-    ],
-    [
-        "naziv" => "Edukacija zaposlenika",
-        "opis" => "Interaktivne radionice o prepoznavanju phishing prijetnji i socijalnog inženjeringa.",
-        "cijena" => 300
-    ],
-    [
-        "naziv" => "Zaštita poslužitelja u oblaku",
-        "opis" => "Konfiguracija IAM politika, vatrozida i enkripcije pohrane u oblaku.",
-        "cijena" => 650
-    ]
-];
+function cijenaSPdv($cijena) {
+    return $cijena * (1 + PDV);
+}
+
+if (!isset($usluge)) {
+    $usluge = [
+        [
+            "naziv" => "Procjena rizika",
+            "opis" => "Sveobuhvatna procjena sigurnosnih rizika za digitalnu infrastrukturu tvrtke.",
+            "cijena" => 450
+        ],
+        [
+            "naziv" => "Sigurnosna analiza",
+            "opis" => "Detaljna penetracijska provjera ranjivosti i sigurnosnih protokola sustava.",
+            "cijena" => 1280
+        ],
+        [
+            "naziv" => "Edukacija zaposlenika",
+            "opis" => "Interaktivne radionice o prepoznavanju phishing prijetnji i socijalnog inženjeringa.",
+            "cijena" => 300
+        ],
+        [
+            "naziv" => "Zaštita poslužitelja u oblaku",
+            "opis" => "Konfiguracija IAM politika, vatrozida i enkripcije pohrane u oblaku.",
+            "cijena" => 650
+        ]
+    ];
+}
 
 $zbrojUkupno = 0;
 
@@ -137,8 +145,8 @@ include "dijelovi/zaglavlje.php";
               <?php
               foreach ($usluge as $u):
                   $cijena = $u["cijena"];
-                  $pdv = $cijena * PDV;
-                  $ukupno = $cijena + $pdv;
+                  $ukupno = cijenaSPdv($cijena);
+                  $pdv = $ukupno - $cijena;
                   $clanovi = round($ukupno * 0.85);
                   $zbrojUkupno += $ukupno;
               ?>
@@ -167,7 +175,7 @@ include "dijelovi/zaglavlje.php";
                     ?>
                     <div class="rate-box">
                       3 rate po <?php echo number_format($rata, 2, ',', '.'); ?> €<br>
-                      <span class="rate-zbroj">(zbroj: <?php echo number_format($zbrojRata, 2, ',', '.'); ?> €)</span>
+                      <span class="rate-zgrobit">(zbroj: <?php echo number_format($zbrojRata, 2, ',', '.'); ?> €)</span>
                     </div>
                   <?php endif; ?>
                 </td>

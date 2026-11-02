@@ -1,5 +1,5 @@
 <?php
-// TSD-4RT | IN | 01.11.2026.
+// TSD-4RT | IN | 02.11.2026.
 
 $izbornik = [
     "o-nama.php"        => "O nama",

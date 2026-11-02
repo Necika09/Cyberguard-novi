@@ -1,5 +1,5 @@
 <?php
-// TSD-4RT | IN | 24.10.2026.
+// TSD-4RT | IN | 02.11.2026.
 ?>
     <?php
       $naslovStranice = "Zaštita oblaka";

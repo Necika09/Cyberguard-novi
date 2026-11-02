@@ -1,5 +1,5 @@
 <?php
-// TSD-4RT | IN | 24.10.2026.
+// TSD-4RT | IN | 02.11.2026.
 
 $godinaOsnutka = 2019;
 $godineRada = (int)date("Y") - $godinaOsnutka;

@@ -1,4 +1,7 @@
 <?php
+
+// TSD-4RT | IN | 02.11.2026.
+
 $dani = ["Ponedjeljak", "Utorak", "Srijeda", "Četvrtak", "Petak", "Subota", "Nedjelja"];
 
 echo "<h3>Prvi i zadnji dan:</h3>";

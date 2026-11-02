@@ -1,7 +1,8 @@
 <?php
-// TSD-4RT | IN | 24.10.2026.
+// TSD-4RT | IN | 02.11.2026.
 $naslovStranice = "Kontakt";
 $trenutnaStranica = "kontakt";
+require "podaci/usluge.php";
 
 include "dijelovi/zaglavlje.php";
 ?>
@@ -265,6 +266,18 @@ include "dijelovi/zaglavlje.php";
                   echo "<option value=\"{$god}\">{$god}.</option>\n";
               }
               ?>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="odabrana-usluga">Zanima me usluga:</label>
+            <select id="odabrana-usluga" name="odabrana-usluga">
+              <option value="">-- Odaberite uslugu --</option>
+              <?php foreach ($usluge as $u): ?>
+                <option value="<?php echo htmlspecialchars($u["naziv"]); ?>">
+                  <?php echo $u["naziv"]; ?> (<?php echo number_format($u["cijena"], 0, ',', '.'); ?> € bez PDV-a)
+                </option>
+              <?php endforeach; ?>
             </select>
           </div>
 

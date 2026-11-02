@@ -1,5 +1,5 @@
 <?php
-// TSD-4RT | IN | 24.10.2026.
+// TSD-4RT | IN | 02.11.2026.
 
 $sat = (int) date("G");
 
@@ -10,13 +10,12 @@ if ($sat < 12) {
 } else {
     $pozdrav = "Dobra večer";
 }
-?>
-    <?php
-      $naslovStranice = "Početna";
-      $trenutnaStranica = "index";
 
-      include "dijelovi/zaglavlje.php";
-    ?>
+$naslovStranice = "Početna";
+$trenutnaStranica = "index";
+
+include "dijelovi/zaglavlje.php";
+?>
 
     <main>
       <section class="hero">
@@ -32,7 +31,6 @@ if ($sat < 12) {
       </section>
 
       <?php
-
       $recenzije = [
           [
               "ime" => "Marko Horvat",
@@ -52,7 +50,9 @@ if ($sat < 12) {
               "ocjena" => 5,
               "tekst" => "Implementacija SOC nadzora donijela nam je miran san i potpunu usklađenost sa strogim sigurnosnim regulativama."
           ]
-        ];
+      ];
+
+      $zbrojOcjena = 0;
       ?>
 
       <section class="card recenzije-sekcija">
@@ -60,15 +60,15 @@ if ($sat < 12) {
           <p class="section-subtitle">Iskustva tvrtki koje su povjerile sigurnost svojih sustava CyberGuard timu</p>
 
           <div class="grid-container recenzije-grid">
-              <?php foreach ($recenzije as $r): ?>
+              <?php foreach ($recenzije as $r): 
+                  $zbrojOcjena += $r['ocjena'];
+              ?>
                   <div class="card recenzija-kartica">
                       <div class="recenzija-zvjezdice">
                           <?php
-                          // Pune zvjezdice pomoću petlje
                           for ($z = 1; $z <= $r['ocjena']; $z++) {
                               echo '<span class="zvijezda-puna">★</span>';
                           }
-                          // Prazne zvjezdice do ukupno 5
                           for ($p = 1; $p <= (5 - $r['ocjena']); $p++) {
                               echo '<span class="zvijezda-prazna">☆</span>';
                           }
@@ -82,6 +82,13 @@ if ($sat < 12) {
                   </div>
               <?php endforeach; ?>
           </div>
+
+          <?php
+          $prosjecnaOcjena = $zbrojOcjena / count($recenzije);
+          ?>
+          <p class="recenzije-prosjek" style="text-align: center; margin-top: 1.5rem; font-size: 1.05rem; color: var(--text-muted, #718096);">
+            Prosječna ocjena: <strong style="color: var(--text-main, #1a202c);"><?php echo number_format($prosjecnaOcjena, 1, ',', '.'); ?></strong> / 5,0 ★
+          </p>
       </section>
 
       <h2 class="section-title">Ključna područja zaštite</h2>
