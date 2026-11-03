@@ -1,0 +1,36 @@
+[
+    {
+        "ime": "Iva",
+        "prezime": "Ivić",
+        "datumRodenja": "2001-04-25"
+    },
+    {
+        "ime": "Pero",
+        "prezime": "Perić",
+        "datumRodenja": "2000-11-03"
+    },
+    {
+        "ime": "Marko",
+        "prezime": "Marić"
+    },
+    {
+        "ime": "Ivan",
+        "prezime": "Nehvatal",
+        "datumRodenja": "2009-01-30"
+    },
+    {
+        "ime": "Roko",
+        "prezime": "Gašljević",
+        "datumRodenja": ""
+    },
+    {
+        "ime": "<b>Test<\/b>",
+        "prezime": "aaaaaaaaaaaaa",
+        "datumRodenja": "2008-12-31"
+    },
+    {
+        "ime": "<script>alert('XSS')<\/script>",
+        "prezime": "bbbbbbbbbbbbbbbbbbbb",
+        "datumRodenja": ""
+    }
+]
