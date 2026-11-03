@@ -1,5 +1,6 @@
 <?php
-// TSD-4RT | IN | 02.11.2026.
+
+// TSD-4RT | IN | 03.11.2026.
 
 function kvadrat($broj) {
     return $broj * $broj;
@@ -73,3 +74,29 @@ function povecaj($brojac) {
 
 echo "Poziv funkcije povecaj(\$brojac): " . povecaj($brojac) . "<br>";
 echo "Ispis varijable \$brojac nakon funkcije: " . $brojac . "<br>";
+
+require "podaci/usluge.php";
+
+echo "<h3>Rad s JSON-om</h3>";
+
+$jsonPodaci = json_encode($usluge, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+echo "<h3>JSON ispis u pre oznaci:</h3>";
+echo "<pre>" . htmlspecialchars($jsonPodaci) . "</pre>";
+
+file_put_contents("podaci/usluge.json", $jsonPodaci);
+echo "<p style='color: green;'>Datoteka podaci/usluge.json je uspješno kreirana!</p>";
+
+$ucitaniTekst = file_get_contents("podaci/usluge.json");
+$ucitaneUsluge = json_decode($ucitaniTekst, true);
+
+echo "<h3>Učitani podaci (print_r):</h3>";
+echo "<pre>";
+print_r($ucitaneUsluge);
+echo "</pre>";
+
+echo "<h3>Isprobavanje bez argumenta true:</h3>";
+$objekti = json_decode($ucitaniTekst);
+echo "<pre>";
+var_dump($objekti);
+echo "</pre>";

@@ -1,17 +1,13 @@
 <?php
-// TSD-4RT | IN | 02.11.2026.
+// TSD-4RT | IN | 03.11.2026.
 
 require_once "dijelovi/funkcije.php";
 
 $sat = (int) date("G");
+$pozdrav = pozdravPremaSatu($sat);
 
-if ($sat < 12) {
-    $pozdrav = "Dobro jutro";
-} elseif ($sat < 18) {
-    $pozdrav = "Dobar dan";
-} else {
-    $pozdrav = "Dobra večer";
-}
+$naslovStranice = "Početna";
+$trenutnaStranica = "index";
 
 $naslovStranice = "Početna";
 $trenutnaStranica = "index";

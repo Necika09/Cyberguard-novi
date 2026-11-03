@@ -1,5 +1,5 @@
 <?php
-// TSD-4RT | IN | 02.11.2026.
+// TSD-4RT | IN | 03.11.2026.
 ?>
     <?php
       $naslovStranice = "NIS2 direktiva u RH";

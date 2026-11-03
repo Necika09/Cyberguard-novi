@@ -1,6 +1,6 @@
 <?php
 
-// TSD-4RT | IN | 02.11.2026.
+// TSD-4RT | IN | 03.11.2026.
 
 $dani = ["Ponedjeljak", "Utorak", "Srijeda", "Četvrtak", "Petak", "Subota", "Nedjelja"];
 

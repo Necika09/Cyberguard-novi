@@ -1,6 +1,6 @@
 <?php
 
-// TSD-4RT | IN | 02.11.2026.
+// TSD-4RT | IN | 03.11.2026.
 
 echo "Brojevi od 1 do 10: ";
 for ($i = 1; $i <= 10; $i++) {
