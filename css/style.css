@@ -879,6 +879,234 @@ footer {
   box-shadow: inset 0 0 0 2px #1d4ed8;
 }
 
+.alert {
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.alert-success {
+  background-color: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.alert-danger {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.form-checkbox-group {
+  margin: 1.25rem 0;
+}
+
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  text-transform: none !important;
+  font-weight: 500 !important;
+  color: var(--color-text-main, #0f172a);
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 1.15rem;
+  height: 1.15rem;
+  cursor: pointer;
+  accent-color: var(--color-primary-blue, #0969da);
+}
+
+.form-actions-inline {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.link-upiti {
+  color: var(--color-primary-blue, #0969da);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.link-upiti:hover {
+  text-decoration: underline;
+  color: #0b2545;
+}
+
+.upiti-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-secondary {
+  background-color: #f1f5f9;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.btn-outline:hover {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+.filter-card {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+}
+
+.search-form {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 260px;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #0969da;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15);
+}
+
+.tabela-upiti {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  background-color: #ffffff;
+}
+
+.tabela-upiti th {
+  background-color: #0b2545;
+  color: #ffffff;
+  padding: 0.85rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid #1e3a5f;
+}
+
+.tabela-upiti td {
+  padding: 0.85rem 0.75rem;
+  border: 1px solid #e2e8f0;
+  vertical-align: top;
+}
+
+.tabela-upiti tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Razina 2: table-success za aktivne upite */
+.tabela-upiti tr.table-success {
+  background-color: #f0fdf4 !important;
+}
+
+.tabela-upiti tr.table-success:hover {
+  background-color: #dcfce7 !important;
+}
+
+.badge-aktivan {
+  display: inline-block;
+  background-color: #16a34a;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  margin-left: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vrijeme-tekst {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.email-link {
+  color: #0969da;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.email-link:hover {
+  text-decoration: underline;
+}
+
+.usluga-oznaka {
+  display: inline-block;
+  background-color: #e2e8f0;
+  color: #1e293b;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.poruka-skracena {
+  max-height: 120px;
+  overflow-y: auto;
+  color: #334155;
+  line-height: 1.45;
+}
+
+.btn-obrisi {
+  background-color: #dc2626;
+  color: #ffffff;
+  border: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn-obrisi:hover {
+  background-color: #b91c1c;
+}
+
+.brojac-upita {
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.nema-upita {
+  padding: 2rem;
+  text-align: center;
+  color: #64748b;
+  font-style: italic;
+}
+
   @media (max-width: 860px) {
     .tabela-responzivno {
       border: none;

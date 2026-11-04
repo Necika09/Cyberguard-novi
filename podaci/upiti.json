@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "vrijeme": "4. 11. 2026. 18:31",
+        "ime": "Ivan Nehvatal",
+        "email": "ivan.neuhvatljivi@gmail.com",
+        "usluga": "Edukacija zaposlenika",
+        "broj_zaposlenika": "20",
+        "godina_osnutka": "2025",
+        "razlog": "suradnja",
+        "poruka": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "aktivan": true
+    },
+    {
+        "id": 2,
+        "vrijeme": "4. 11. 2026. 18:35",
+        "ime": "Ivan Nehvatal",
+        "email": "ivan.neuhvatljivi@gmail.com",
+        "usluga": "Sigurnosna analiza",
+        "broj_zaposlenika": "140",
+        "godina_osnutka": "2015",
+        "razlog": "edukacija",
+        "poruka": "bbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "aktivan": false
+    }
+]

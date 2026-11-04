@@ -1,4 +1,6 @@
 <?php
+// TSD-4RT | IN | 04.11.2026.
+
 $trazi = trim($_GET["trazi"] ?? "");
 
 $putanja = __DIR__ . "/korisnici.json";

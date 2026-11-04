@@ -64,11 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       errorElem.textContent = "";
       messageField.classList.remove("input-error");
-      e.preventDefault();
-      alert(
-        "Hvala vam na upitu! Naš tim za informacijsku sigurnost javit će vam se u najkraćem roku.",
-      );
-      form.reset();
     });
   });
 

@@ -1,4 +1,6 @@
 <?php
+// TSD-4RT | IN | 04.11.2026.
+
 $putanja = __DIR__ . "/korisnici.json";
 
 if (file_exists($putanja)) {

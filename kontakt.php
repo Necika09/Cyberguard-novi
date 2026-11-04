@@ -1,5 +1,5 @@
 <?php
-// TSD-4RT | IN | 03.11.2026.
+// TSD-4RT | IN | 04.11.2026.
 
 $naslovStranice = "Kontakt";
 $trenutnaStranica = "kontakt";
@@ -223,9 +223,22 @@ include "dijelovi/zaglavlje.php";
         <p class="section-subtitle">
           Ispunite obrazac u nastavku i naš tim će vam se javiti unutar 24 sata.
         </p>
-        <form class="contact-form" id="kontaktForma">
+
+        <!-- Blok 10 - Razina 1: Prikaz statusa nakon obrade -->
+        <?php if (isset($_GET["uspjeh"])): ?>
+          <div class="alert alert-success" role="alert">
+            ✓ Upit je zaprimljen.
+          </div>
+        <?php elseif (isset($_GET["greska"])): ?>
+          <div class="alert alert-danger" role="alert">
+            ✕ Molimo ispunite sva obavezna polja (ime, e-pošta, usluga i poruka).
+          </div>
+        <?php endif; ?>
+
+        <!-- Blok 10 - Razina 1: method="post" i action="spremi_upit.php" -->
+        <form class="contact-form" id="kontaktForma" action="spremi_upit.php" method="post">
           <div class="form-group">
-            <label for="ime">Ime i prezime:</label>
+            <label for="ime">Ime i prezime *</label>
             <input
               type="text"
               id="ime"
@@ -235,7 +248,7 @@ include "dijelovi/zaglavlje.php";
             />
           </div>
           <div class="form-group">
-            <label for="email">E-mail adresa:</label>
+            <label for="email">E-mail adresa *</label>
             <input
               type="email"
               id="email"
@@ -271,8 +284,8 @@ include "dijelovi/zaglavlje.php";
           </div>
 
           <div class="form-group">
-            <label for="odabrana-usluga">Zanima me usluga:</label>
-            <select id="odabrana-usluga" name="odabrana-usluga">
+            <label for="odabrana-usluga">Zanima me usluga *</label>
+            <select id="odabrana-usluga" name="odabrana-usluga" required>
               <option value="">-- Odaberite uslugu --</option>
               <?php foreach ($usluge as $u): ?>
                 <option value="<?php echo htmlspecialchars($u["naziv"]); ?>">
@@ -291,8 +304,23 @@ include "dijelovi/zaglavlje.php";
               <option value="suradnja">Poslovna suradnja</option>
             </select>
           </div>
+
+          <!-- Blok 10 - Razina 2: Kvačica Aktivan upit -->
+          <div class="form-group form-checkbox-group">
+            <label class="checkbox-label" for="aktivan">
+              <input
+                type="checkbox"
+                id="aktivan"
+                name="aktivan"
+                value="1"
+                checked
+              />
+              <span>Označi upit kao <strong>aktivan</strong> (prioritetna obrada)</span>
+            </label>
+          </div>
+
           <div class="form-group">
-            <label for="poruka">Vaša poruka (minimalno 20 znakova):</label>
+            <label for="poruka">Vaša poruka (minimalno 20 znakova) *</label>
             <textarea
               id="poruka"
               name="poruka"
@@ -312,7 +340,11 @@ include "dijelovi/zaglavlje.php";
               Poruka mora sadržavati minimalno 20 znakova!
             </small>
           </div>
-          <button type="submit" class="btn">Pošalji poruku</button>
+
+          <div class="form-actions-inline">
+            <button type="submit" class="btn">Pošalji poruku</button>
+            <a href="upiti.php" class="link-upiti">→ Pregled zaprimljenih upita</a>
+          </div>
         </form>
       </section>
     </main>

@@ -1,5 +1,5 @@
 <?php
-// TSD-4RT | IN | 03.11.2026.
+// TSD-4RT | IN | 04.11.2026.
 
 require_once __DIR__ . "/funkcije.php";
 
@@ -151,6 +151,6 @@ if (jeOtvoreno($dan, $sat)) {
       </div>
     </aside>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=<?php echo time(); ?>"></script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-// TSD-4RT | IN | 03.11.2026.
+// TSD-4RT | IN | 04.11.2026.
 
 echo "--- A1: Usporedbe ---\n";
 var_dump(5 == "5");

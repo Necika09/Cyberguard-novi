@@ -1,5 +1,5 @@
 <?php
-// TSD-4RT | IN | 03.11.2026.
+// TSD-4RT | IN | 04.11.2026.
 ?>
     <?php
       $naslovStranice = "Misija i vizija";
